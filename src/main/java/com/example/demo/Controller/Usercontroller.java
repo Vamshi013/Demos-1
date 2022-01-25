@@ -19,7 +19,6 @@ import com.example.demo.service.IUserservice;
 
 @RestController
 public class Usercontroller {
-	private static final HttpStatus Http = null;
 	@Autowired
 	IUserservice userService;
 	@GetMapping("/user")
@@ -36,8 +35,10 @@ public class Usercontroller {
 		System.out.println(user.getName());
 		userService.saveUser(user);
 	}
-	@DeleteMapping("/user")
-	void deleteUser() {
+	@DeleteMapping("/user/{id}")
+	void deleteUser(@PathVariable("id") Integer id) {
+		userService.deleteser(id);
+	   
 		
 	}
 
