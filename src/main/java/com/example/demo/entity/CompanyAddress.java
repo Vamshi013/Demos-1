@@ -4,29 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
 
-@Entity 
-
-public class Address {
-	@Id 
+@Entity
+public class CompanyAddress {
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Integer id;
-	String house;
+	@JoinColumn(name = "companyaddress_id", referencedColumnName = "company_id")
+	private Integer id;
 	String street;
-	@OneToOne(mappedBy = "address")
-	public String getHouse() {
-		return house;
-	}
-	public void setHouse(String house) {
-		this.house = house;
-	}
+	String house;
 	public String getStreet() {
 		return street;
 	}
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	
+	public String getHouse() {
+		return house;
+	}
+	public void setHouse(String house) {
+		this.house = house;
+	}	
 
 }

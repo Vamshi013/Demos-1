@@ -16,14 +16,26 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	@Range(min = 0)
+	private Integer age;
 	@NotBlank
 	private String name;
-	@Range(min=0)
-	private Integer age;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn (name="address_id",referencedColumnName="id")
+	@OneToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	Address address;
 	
+	@OneToOne (cascade = CascadeType.ALL)
+	@JoinColumn(name = "company_id", referencedColumnName = "id")
+	Company company;
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -32,14 +44,6 @@ public class User {
 		this.address = address;
 	}
 
-	public Integer getAge() {
-		return age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-	
 	public Integer getId() {
 		return id;
 	}
@@ -55,5 +59,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	public Integer getAge() {
+		return age;
+	}
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 }
